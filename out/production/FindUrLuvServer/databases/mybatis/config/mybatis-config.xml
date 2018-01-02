@@ -28,9 +28,9 @@
             <transactionManager type="JDBC" />
             <dataSource type="POOLED">
                 <property name="driver" value="com.mysql.jdbc.Driver" />
-                <property name="url" value="jdbc:mysql://1.201.142.86:3306/kopas?useUnicode=yes&amp;characterEncoding=UTF-8&amp;autoReconnect=true&amp;" />
+                <property name="url" value="jdbc:mysql://www.picklecode.co.kr:3306/FindUrLuv?useUnicode=yes&amp;characterEncoding=UTF-8&amp;autoReconnect=true&amp;" />
                 <property name="username" value="root" />
-                <property name="password" value="$#@!richware7" />
+                <property name="password" value="pickle!@#$" />
                 <property name="poolMaximumActiveConnections" value="20"></property>
                 <property name="poolMaximumIdleConnections" value="20"></property>
                 <property name="poolMaximumCheckoutTime" value="20000"></property>
@@ -46,8 +46,10 @@
         <!-- Mapper for executing simple String-based queries directly -->
         <mapper class="databases.mybatis.mapper.SqlMapper"/>
         <!-- Mapper for executing queries commonly used directly -->
+
         <mapper resource="databases/mybatis/query/CommMapper.xml"/>
         <!-- Mapper for executing queries commonly used in an web directly -->
+        <mapper resource="databases/mybatis/query/AdminMapper.xml"/>
         <mapper resource="databases/mybatis/query/UserMapper.xml"/>
         <!-- Mapper for executing queries mainly used in the diligence checking process -->
         <mapper resource="databases/mybatis/query/DiligenceMapper.xml"/>
