@@ -2,15 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cb091811-40b6-44fb-ace9-4de9edab4a70" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/databases/mybatis/mapper/AdminMapper.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/databases/mybatis/query/AdminMapper.xml" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/out/production/FindUrLuvServer/databases/mybatis/config/mybatis-config.xml" afterPath="$PROJECT_DIR$/out/production/FindUrLuvServer/databases/mybatis/config/mybatis-config.xml" />
+      <change beforePath="$PROJECT_DIR$/out/production/FindUrLuvServer/databases/mybatis/mapper/DiligenceMapper.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/out/production/FindUrLuvServer/databases/mybatis/query/DiligenceMapper.xml" afterPath="" />
       <change beforePath="$PROJECT_DIR$/out/production/FindUrLuvServer/server/ignition/ServiceIgniter.class" afterPath="$PROJECT_DIR$/out/production/FindUrLuvServer/server/ignition/ServiceIgniter.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/FindUrLuvServer/services/AdminSVC.class" afterPath="$PROJECT_DIR$/out/production/FindUrLuvServer/services/AdminSVC.class" />
       <change beforePath="$PROJECT_DIR$/src/databases/mybatis/config/mybatis-config.xml" afterPath="$PROJECT_DIR$/src/databases/mybatis/config/mybatis-config.xml" />
+      <change beforePath="$PROJECT_DIR$/src/databases/mybatis/mapper/DiligenceMapper.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/databases/mybatis/mapper/UserMapper.java" afterPath="$PROJECT_DIR$/src/databases/mybatis/mapper/UserMapper.java" />
+      <change beforePath="$PROJECT_DIR$/src/databases/mybatis/query/DiligenceMapper.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/databases/mybatis/query/UserMapper.xml" afterPath="$PROJECT_DIR$/src/databases/mybatis/query/UserMapper.xml" />
       <change beforePath="$PROJECT_DIR$/src/server/ignition/ServiceIgniter.java" afterPath="$PROJECT_DIR$/src/server/ignition/ServiceIgniter.java" />
-      <change beforePath="$PROJECT_DIR$/src/services/AdminSVC.java" afterPath="$PROJECT_DIR$/src/services/AdminSVC.java" />
+      <change beforePath="$PROJECT_DIR$/src/services/CommonSVC.java" afterPath="$PROJECT_DIR$/src/services/CommonSVC.java" />
+      <change beforePath="$PROJECT_DIR$/src/services/UserSVC.java" afterPath="$PROJECT_DIR$/src/services/UserSVC.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -22,12 +26,52 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="ServiceIgniter.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ServiceIgniter.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/server/ignition/ServiceIgniter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="393">
-              <caret line="117" column="88" lean-forward="false" selection-start-line="117" selection-start-column="88" selection-end-line="117" selection-end-column="88" />
+            <state relative-caret-position="248">
+              <caret line="159" column="53" lean-forward="false" selection-start-line="159" selection-start-column="53" selection-end-line="159" selection-end-column="53" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UserSVC.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/services/UserSVC.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="231">
+              <caret line="43" column="49" lean-forward="false" selection-start-line="43" selection-start-column="49" selection-end-line="43" selection-end-column="49" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UserMapper.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/databases/mybatis/mapper/UserMapper.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="170">
+              <caret line="10" column="34" lean-forward="false" selection-start-line="10" selection-start-column="12" selection-end-line="10" selection-end-column="34" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UserMapper.xml" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/databases/mybatis/query/UserMapper.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="849">
+              <caret line="50" column="0" lean-forward="true" selection-start-line="50" selection-start-column="0" selection-end-line="50" selection-end-column="0" />
+              <folding>
+                <marker date="1514885105485" expanded="true" signature="262:360" ph="SELECT * FRO... tblMember" />
+                <marker date="1514885105485" expanded="true" signature="446:554" ph="SELECT * FRO... tblMember" />
+                <marker date="1514885105485" expanded="true" signature="634:707" ph="SELECT * FRO... tblMember" />
+                <marker date="1514885105485" expanded="true" signature="784:851" ph="SELECT * FRO... tblMember" />
+                <marker date="1514885105485" expanded="true" signature="931:1002" ph="SELECT * FRO... tblMember" />
+                <marker date="1514885105485" expanded="true" signature="1081:1150" ph="SELECT * FRO... tblMember" />
+                <marker date="1514885105485" expanded="true" signature="1207:1666" ph="INSERT INTO tblMember... " />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -45,6 +89,8 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>check</find>
+      <find>join</find>
+      <find>registerMember</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -60,11 +106,15 @@
       <list>
         <option value="$PROJECT_DIR$/src/databases/mybatis/query/AdminMapper.fxml" />
         <option value="$PROJECT_DIR$/src/databases/mybatis/mapper/AdminMapper.java" />
-        <option value="$PROJECT_DIR$/src/databases/mybatis/config/mybatis-config.xml" />
         <option value="$PROJECT_DIR$/src/databases/mybatis/query/AdminMapper.xml" />
         <option value="$PROJECT_DIR$/src/services/AdminSVC.java" />
         <option value="$PROJECT_DIR$/src/databases/mybatis/DBSessionWrapper.java" />
+        <option value="$PROJECT_DIR$/src/databases/mybatis/config/mybatis-config.xml" />
+        <option value="$PROJECT_DIR$/src/services/CommonSVC.java" />
+        <option value="$PROJECT_DIR$/src/databases/mybatis/mapper/UserMapper.java" />
         <option value="$PROJECT_DIR$/src/server/ignition/ServiceIgniter.java" />
+        <option value="$PROJECT_DIR$/src/services/UserSVC.java" />
+        <option value="$PROJECT_DIR$/src/databases/mybatis/query/UserMapper.xml" />
       </list>
     </option>
   </component>
@@ -75,7 +125,8 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds" fullScreen="true">
-    <option name="width" value="1440" />
+    <option name="x" value="804" />
+    <option name="width" value="636" />
     <option name="height" value="900" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -311,12 +362,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1514861813790</updated>
-      <workItem from="1514861817772" duration="6561000" />
+      <workItem from="1514861817772" duration="15862000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="6561000" />
+    <option name="totallyTimeSpent" value="15862000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -330,12 +381,12 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32941177" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32941177" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32941177" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -425,22 +476,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/services/UserSVC.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="65">
-          <caret line="27" column="4" lean-forward="false" selection-start-line="27" selection-start-column="4" selection-end-line="33" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/server/ignition/BaseIgniter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2721">
-          <caret line="27" column="13" lean-forward="false" selection-start-line="27" selection-start-column="13" selection-end-line="27" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/server/Server.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
@@ -481,16 +516,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/databases/mybatis/mapper/UserMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="21" column="68" lean-forward="true" selection-start-line="21" selection-start-column="4" selection-end-line="21" selection-end-column="68" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/databases/mybatis/query/AdminMapper.fxml">
       <provider editor-type-id="JavaFX-Scene-Builder">
         <state />
@@ -499,74 +524,6 @@
         <state relative-caret-position="170">
           <caret line="10" column="62" lean-forward="true" selection-start-line="10" selection-start-column="27" selection-end-line="10" selection-end-column="62" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/databases/mybatis/query/UserMapper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="0" lean-forward="true" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-          <folding>
-            <marker date="1512288972000" expanded="true" signature="260:347" ph="SELECT * FRO... tblMember" />
-            <marker date="1512288972000" expanded="true" signature="422:473" ph="SELECT * FRO... tblMember" />
-            <marker date="1512288972000" expanded="true" signature="549:589" ph="SELECT * FRO... tblMember" />
-            <marker date="1512288972000" expanded="true" signature="672:737" ph="SELECT * FRO... tblAffiliation" />
-            <marker date="1512288972000" expanded="true" signature="831:891" ph="SELECT * FRO... tblMember" />
-            <marker date="1512288972000" expanded="true" signature="976:1051" ph="SELECT * FRO... tblMember" />
-            <marker date="1512288972000" expanded="true" signature="1110:1166" ph="UPDATE tblMember... " />
-            <marker date="1512288972000" expanded="true" signature="1217:1263" ph="INSERT INTO tblAdmin... " />
-            <marker date="1512288972000" expanded="true" signature="1336:1424" ph="SELECT * FRO... tblMember" />
-            <marker date="1512288972000" expanded="true" signature="1500:1609" ph="SELECT * FRO... tblMember" />
-            <marker date="1512288972000" expanded="true" signature="1673:1732" ph="UPDATE tblMember... " />
-            <marker date="1512288972000" expanded="true" signature="1789:2058" ph="INSERT INTO tblMember... " />
-            <marker date="1512288972000" expanded="true" signature="2111:2163" ph="UPDATE tblMember... " />
-            <marker date="1512288972000" expanded="true" signature="2217:2271" ph="UPDATE tblMember... " />
-            <marker date="1512288972000" expanded="true" signature="2328:2382" ph="UPDATE tblMember... " />
-            <marker date="1512288972000" expanded="true" signature="2435:2485" ph="UPDATE tblMember... " />
-            <marker date="1512288972000" expanded="true" signature="2539:2589" ph="UPDATE tblMember... " />
-            <marker date="1512288972000" expanded="true" signature="2643:2694" ph="UPDATE tblMember... " />
-            <marker date="1512288972000" expanded="true" signature="2749:2800" ph="UPDATE tblMember... " />
-            <marker date="1512288972000" expanded="true" signature="2856:2909" ph="UPDATE tblMember... " />
-            <marker date="1512288972000" expanded="true" signature="2966:3019" ph="UPDATE tblMember... " />
-            <marker date="1512288972000" expanded="true" signature="3081:3138" ph="UPDATE tblMember... " />
-            <marker date="1512288972000" expanded="true" signature="3218:3391" ph="SELECT *, (S... tblAffiliation" />
-            <marker date="1512288972000" expanded="true" signature="3473:3866" ph="SELECT *, (S... tblAffiliation" />
-            <marker date="1512288972000" expanded="true" signature="3504:3564" ph="SELECT descr... tblZipSido" />
-            <marker date="1512288972000" expanded="true" signature="3589:3652" ph="SELECT descr... tblZipGugun" />
-            <marker date="1512288972000" expanded="true" signature="3678:3738" ph="SELECT descr... tblZipDong" />
-            <marker date="1512288972000" expanded="true" signature="3947:4301" ph="SELECT *, (S... tblMember" />
-            <marker date="1512288972000" expanded="true" signature="3978:4031" ph="SELECT title... tblPosition" />
-            <marker date="1512288972000" expanded="true" signature="4060:4105" ph="SELECT title... tblDept" />
-            <marker date="1512288972000" expanded="true" signature="4384:4473" ph="SELECT COUNT... tblAffiliation" />
-            <marker date="1512288972000" expanded="true" signature="4529:4678" ph="INSERT INTO tblAffiliation... " />
-            <marker date="1512288972000" expanded="true" signature="4756:4823" ph="SELECT code tblApproval" />
-            <marker date="1512288972000" expanded="true" signature="4880:4990" ph="UPDATE tblAffiliation... " />
-            <marker date="1512288972000" expanded="true" signature="5077:5400" ph="SELECT * FRO... *" />
-            <marker date="1512288972000" expanded="true" signature="5111:5308" ph="SELECT *, (S... tblDiligence" />
-            <marker date="1512288972000" expanded="true" signature="5142:5191" ph="SELECT compa... tblGate" />
-            <marker date="1512288972000" expanded="true" signature="5481:5552" ph="SELECT COUNT... tblGestureAllowedGate" />
-            <marker date="1512288972000" expanded="true" signature="5606:5745" ph="INSERT INTO tblGestureAllowedGate... " />
-            <marker date="1512288972000" expanded="true" signature="5746:5768" ph="UPDATE uptDate... " />
-            <marker date="1512288972000" expanded="true" signature="5826:5919" ph="DELETE FROM tblGestureAllowedGate... " />
-            <marker date="1512288972000" expanded="true" signature="5997:6060" ph="SELECT COUNT... tblFavoriteGate" />
-            <marker date="1512288972000" expanded="true" signature="6111:6244" ph="INSERT INTO tblFavoriteGate... " />
-            <marker date="1512288972000" expanded="true" signature="6245:6267" ph="UPDATE uptDate... " />
-            <marker date="1512288972000" expanded="true" signature="6320:6407" ph="DELETE FROM tblFavoriteGate... " />
-            <marker date="1512288972000" expanded="true" signature="6487:6633" ph="SELECT *, (S... tblFavoriteGate" />
-            <marker date="1512288972000" expanded="true" signature="6498:6541" ph="SELECT title... tblGate" />
-            <marker date="1512288972000" expanded="true" signature="6717:6958" ph="SELECT *, CA... tblGate" />
-            <marker date="1512288972000" expanded="true" signature="6758:6818" ph="SELECT membe... tblGestureAllowedGate" />
-            <marker date="1512288972000" expanded="true" signature="7035:7582" ph="SELECT *, CA... tblGate" />
-            <marker date="1512288972000" expanded="true" signature="7076:7164" ph="SELECT COUNT... tblFavoriteGate" />
-            <marker date="1512288972000" expanded="true" signature="7243:7337" ph="SELECT COUNT... tblGestureAllowedGate" />
-            <marker date="1512288972000" expanded="true" signature="7662:7752" ph="SELECT * FRO... tblEntranceRange" />
-            <marker date="1512288972000" expanded="true" signature="7803:7930" ph="UPDATE tblMember... " />
-            <marker date="1512288972000" expanded="true" signature="7988:8060" ph="DELETE FROM tblAffiliation... " />
-            <marker date="1512288972000" expanded="true" signature="8149:8334" ph="SELECT * FRO... tblDiligence" />
-            <marker date="1512288972000" expanded="true" signature="8420:8693" ph="SELECT *, (S... tblDiligence" />
-            <marker date="1512288972000" expanded="true" signature="8431:8481" ph="SELECT name tblCompany" />
-            <marker date="1512288972000" expanded="true" signature="8751:8915" ph="INSERT INTO tblDiligence... " />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -583,16 +540,6 @@
         <state relative-caret-position="181">
           <caret line="62" column="0" lean-forward="false" selection-start-line="62" selection-start-column="0" selection-end-line="62" selection-end-column="0" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/databases/mybatis/mapper/AdminMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="40" lean-forward="false" selection-start-line="6" selection-start-column="40" selection-end-line="6" selection-end-column="40" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -620,14 +567,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/databases/mybatis/config/mybatis-config.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="302">
-          <caret line="51" column="52" lean-forward="true" selection-start-line="51" selection-start-column="52" selection-end-line="51" selection-end-column="52" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/databases/mybatis/query/AdminMapper.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
@@ -643,7 +582,7 @@
         <state relative-caret-position="272">
           <caret line="16" column="5" lean-forward="true" selection-start-line="16" selection-start-column="5" selection-end-line="16" selection-end-column="5" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -653,16 +592,84 @@
         <state relative-caret-position="72">
           <caret line="11" column="58" lean-forward="true" selection-start-line="11" selection-start-column="58" selection-end-line="11" selection-end-column="58" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/databases/mybatis/config/mybatis-config.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="548">
+          <caret line="47" column="30" lean-forward="true" selection-start-line="47" selection-start-column="30" selection-end-line="47" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/databases/mybatis/mapper/AdminMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="40" lean-forward="false" selection-start-line="6" selection-start-column="40" selection-end-line="6" selection-end-column="40" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/services/CommonSVC.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-64">
+          <caret line="48" column="5" lean-forward="true" selection-start-line="48" selection-start-column="5" selection-end-line="48" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/server/ignition/BaseIgniter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2180">
+          <caret line="27" column="13" lean-forward="false" selection-start-line="27" selection-start-column="13" selection-end-line="27" selection-end-column="13" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/server/ignition/ServiceIgniter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="393">
-          <caret line="117" column="88" lean-forward="false" selection-start-line="117" selection-start-column="88" selection-end-line="117" selection-end-column="88" />
+        <state relative-caret-position="248">
+          <caret line="159" column="53" lean-forward="false" selection-start-line="159" selection-start-column="53" selection-end-line="159" selection-end-column="53" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/services/UserSVC.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="231">
+          <caret line="43" column="49" lean-forward="false" selection-start-line="43" selection-start-column="49" selection-end-line="43" selection-end-column="49" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/databases/mybatis/mapper/UserMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="34" lean-forward="false" selection-start-line="10" selection-start-column="12" selection-end-line="10" selection-end-column="34" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/databases/mybatis/query/UserMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="849">
+          <caret line="50" column="0" lean-forward="true" selection-start-line="50" selection-start-column="0" selection-end-line="50" selection-end-column="0" />
+          <folding>
+            <marker date="1514885105485" expanded="true" signature="262:360" ph="SELECT * FRO... tblMember" />
+            <marker date="1514885105485" expanded="true" signature="446:554" ph="SELECT * FRO... tblMember" />
+            <marker date="1514885105485" expanded="true" signature="634:707" ph="SELECT * FRO... tblMember" />
+            <marker date="1514885105485" expanded="true" signature="784:851" ph="SELECT * FRO... tblMember" />
+            <marker date="1514885105485" expanded="true" signature="931:1002" ph="SELECT * FRO... tblMember" />
+            <marker date="1514885105485" expanded="true" signature="1081:1150" ph="SELECT * FRO... tblMember" />
+            <marker date="1514885105485" expanded="true" signature="1207:1666" ph="INSERT INTO tblMember... " />
+          </folding>
         </state>
       </provider>
     </entry>

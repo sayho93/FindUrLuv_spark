@@ -1,11 +1,9 @@
 package services;
 
 import databases.mybatis.mapper.CommMapper;
-import databases.mybatis.mapper.DiligenceMapper;
 import databases.mybatis.mapper.UserMapper;
 import databases.paginator.ListBox;
 import databases.paginator.PageInfo;
-import org.apache.commons.lang3.StringUtils;
 import org.apache.ibatis.session.SqlSession;
 import server.comm.DataMap;
 import server.rest.DataMapUtil;
@@ -14,7 +12,6 @@ import utils.kopas.KopasReturn;
 import utils.kopas.KopasTransmitter;
 
 import java.util.List;
-import java.util.Vector;
 
 public class CommonSVC extends BaseService {
 
@@ -81,30 +78,6 @@ public class CommonSVC extends BaseService {
             CommMapper commMapper = sqlSession.getMapper(CommMapper.class);
             return commMapper.getGugunList(sidoID);
         }
-    }
-
-    public List<DataMap> getGatesByBeacon(String beaconSN, int major, int minor){
-        try(SqlSession sqlSession = super.getSession()){
-            DiligenceMapper diligenceMapper = sqlSession.getMapper(DiligenceMapper.class);
-            return diligenceMapper.getGatesByBeacon(beaconSN, major, minor);
-        }
-    }
-
-    public KopasReturn getStatusOfKopasTest(){
-        KopasReturn kopasReturn = new KopasTransmitter().sendAndGet(AKopasTransmitter.PID.doAction, "d8faq8dn", AKopasTransmitter.ACTION.OFF);
-        return kopasReturn;
-    }
-
-    // TODO
-    public int openTheDoor(int memberId, int gateId){
-        try(SqlSession sqlSession = super.getSession()){
-            UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
-            DiligenceMapper diligenceMapper = sqlSession.getMapper(DiligenceMapper.class);
-            CommMapper commMapper = sqlSession.getMapper(CommMapper.class);
-
-            userMapper.getUserByKey(memberId);
-        }
-        return 0;
     }
 
     public List<String> filterBeacon(String csv){

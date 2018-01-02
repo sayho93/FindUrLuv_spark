@@ -23,6 +23,7 @@ import utils.MailSender;
 
 import javax.servlet.MultipartConfigElement;
 import javax.servlet.http.Part;
+import javax.xml.crypto.Data;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -83,9 +84,9 @@ public class ServiceIgniter extends BaseIgniter{
      */
     public void igniteServiceServer() {
 
-        setProjectName("Kopas");
-        setDeveloper("EuiJin.Ham");
-        setCallSample("http://192.168.0.101:10040");
+        setProjectName("FindUrLuv");
+        setDeveloper("Sayho.Chun");
+        setCallSample("http://192.168.0.1:10040");
         setDebugMode(true);
 
         service = Service.ignite().port(RestConstant.REST_SERVICE);
@@ -100,7 +101,7 @@ public class ServiceIgniter extends BaseIgniter{
 
         super.get(service, "/system", (req, res) -> new Response(ResponseConst.CODE_SUCCESS, ResponseConst.MSG_SUCCESS, System.getenv()), "서버 시스템 환경을 확인하기 위한 API 입니다.");
 
-        super.get(service, "web/admin/check/password", (req, res) -> {
+        super.post(service, "web/admin/check/password", (req, res) -> {
             DataMap map = RestProcessor.makeProcessData(req.raw());
 
             if(DataMapUtil.isValid(map, "account", "password")){
@@ -120,24 +121,54 @@ public class ServiceIgniter extends BaseIgniter{
         }, "관리자 비밀번호 검증을 위한 API", "account", "password");
 
 
-        super.post(service, "/web/user/check/password", (req, res) -> {
+        super.post(service, "/web/member/register", (req, res) -> {
             DataMap map = RestProcessor.makeProcessData(req.raw());
 
-            if(DataMapUtil.isValid(map, "email", "password")){
-                final String id = map.getString("email");
-                final String password = map.getString("password");
+            if(DataMapUtil.isValid(map, "name", "nick", "email", "regType", "phone", "region", "birth", "sex", "tendency", "introTxt")){
+                final int retCode = userSVC.registerMember(map);
 
-                DataMap user = userSVC.checkPassword(id, password);
+                if(retCode == ResponseConst.CODE_SUCCESS) return new Response(ResponseConst.CODE_SUCCESS, ResponseConst.MSG_SUCCESS);
+                else if(retCode == ResponseConst.CODE_ALREADY_EXIST) return new Response(ResponseConst.CODE_ALREADY_EXIST, ResponseConst.MSG_ALREADY_EXIST);
+                else return new Response(ResponseConst.CODE_FAILURE, ResponseConst.MSG_FAILURE);
 
-                if(user == null) return new Response(ResponseConst.CODE_FAILURE, ResponseConst.MSG_FAILURE);
-                else {
-                    DataMapUtil.mask(user, "password");
-                    return new Response(ResponseConst.CODE_SUCCESS, ResponseConst.MSG_SUCCESS, user);
-                }
             }else{
                 return new Response(ResponseConst.CODE_INVALID_PARAM, ResponseConst.MSG_INVALID_PARAM);
             }
-        }, "직원용 APP 비밀번호 검증을 위한 API 입니다.", "email", "password");
+
+        }, "회원가입을 위한 API", "name", "nick", "email", "phone", "region", "password[optional]", "accessToken[optional]", "regType", "birth", "sex", "tendancy", "introTxt");
+
+        super.get(service, "/web/member/check/email", (req, res) -> {
+            DataMap map =RestProcessor.makeProcessData(req.raw());
+
+            if(DataMapUtil.isValid(map, "email")){
+                final String email = map.getString("email");
+                final boolean retVal = userSVC.checkDuplicateEmail(email);
+                if(retVal == true)
+                    return new Response(ResponseConst.CODE_SUCCESS, ResponseConst.MSG_SUCCESS);
+                else
+                    return new Response(ResponseConst.CODE_ALREADY_EXIST, ResponseConst.MSG_ALREADY_EXIST);
+            }else{
+                return new Response(ResponseConst.CODE_INVALID_PARAM, ResponseConst.MSG_INVALID_PARAM);
+            }
+        }, "해당 이메일로 가입된 회원이 있는지 판별하는 API", "email");
+
+
+        super.post(service, "/web/member/login", (req, res) -> {
+            DataMap map = RestProcessor.makeProcessData(req.raw());
+
+            if(DataMapUtil.isValid(map, "loginType", "email")){
+                final DataMap member = userSVC.memberLogin(map);
+                if(member == null)
+                    return new Response(ResponseConst.CODE_NOT_EXISTING, ResponseConst.MSG_NOT_EXISTING);
+
+                return new Response(ResponseConst.CODE_SUCCESS, ResponseConst.MSG_SUCCESS, member);
+            }else{
+                return new Response(ResponseConst.CODE_INVALID_PARAM, ResponseConst.MSG_INVALID_PARAM);
+            }
+        }, "회원 로그인을 위한 API", "loginType", "email", "password[optional]");
+
+
+        //old
 
 
         /**
