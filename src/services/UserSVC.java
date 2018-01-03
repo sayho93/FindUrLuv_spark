@@ -1,7 +1,6 @@
 package services;
 
 import com.sun.org.apache.xpath.internal.operations.Bool;
-import com.sun.tools.internal.xjc.reader.xmlschema.bindinfo.BIConversion;
 import databases.mybatis.mapper.CommMapper;
 import databases.mybatis.mapper.UserMapper;
 import databases.paginator.ListBox;
@@ -11,6 +10,7 @@ import org.apache.commons.lang3.tuple.Pair;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.jdbc.SQL;
 import org.apache.ibatis.session.SqlSession;
+import org.eclipse.jetty.server.Authentication;
 import server.comm.DataMap;
 import server.response.Response;
 import server.response.ResponseConst;
@@ -52,23 +52,35 @@ public class UserSVC extends BaseService {
         try(SqlSession sqlSession = super.getSession()){
             UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
             DataMap member = userMapper.getMemberByEmail(email);
-            if(member == null)
-                return true;
-            return false;
+
+            return member == null;
+        }
+    }
+
+    public boolean checkDuplicateNick(String nick){
+        try(SqlSession sqlSession = super.getSession()){
+            UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
+            DataMap member = userMapper.getMemberByNick(nick);
+
+            return member == null;
+        }
+    }
+
+    public boolean checkDuplicatePhone(String phone){
+        try(SqlSession sqlSession = super.getSession()){
+            UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
+            DataMap member = userMapper.getMemberByPhone(phone);
+
+            return member == null;
         }
     }
 
     public int registerMember(DataMap map){
-        final String name = map.getString("name");
         final String nick = map.getString("nick");
         final String email = map.getString("email");
         final String regType = map.getString("regType");
         final String phone = map.getString("phone").replaceAll("-", "");
-        final int region = map.getInt("region");
-        final String birth = map.getString("birth");
-        final String sex = map.getString("sex");
-        final String tendency = map.getString("tendency");
-        final String introText = map.getString("introTxt");
+        map.put("phone", phone);
 
         if(regType.equals("E")){
             final String password = RestUtil.getMessageDigest(map.getString("password"));
@@ -93,19 +105,6 @@ public class UserSVC extends BaseService {
             }
             return ResponseConst.CODE_SUCCESS;
         }
-
         return ResponseConst.CODE_FAILURE;
-    }
-
-//    public DataMap memberLogin(String email, String password, String loginType){
-//
-//    }
-
-    public DataMap checkPassword(String id, String pw){
-        pw = RestUtil.getMessageDigest(pw);
-        try(SqlSession sqlSession = super.getSession()){
-            UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
-            return userMapper.getMember(id, pw);
-        }
     }
 }

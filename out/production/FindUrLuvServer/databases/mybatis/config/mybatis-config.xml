@@ -51,6 +51,8 @@
         <!-- Mapper for executing queries commonly used in an web directly -->
         <mapper resource="databases/mybatis/query/AdminMapper.xml"/>
         <mapper resource="databases/mybatis/query/UserMapper.xml"/>
+        <mapper resource="databases/mybatis/query/ArticleMapper.xml"/>
+
     </mappers>
 
 </configuration>
