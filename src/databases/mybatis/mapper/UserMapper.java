@@ -6,6 +6,8 @@ import server.comm.DataMap;
 import java.util.List;
 
 public interface UserMapper {
+    DataMap getRestrictionData(@Param("id") int id);
+
     DataMap getMember(@Param("email") String email, @Param("password") String password);
 
     DataMap getMemberByAccessToken(@Param("email") String email, @Param("accessToken") String accessToken);

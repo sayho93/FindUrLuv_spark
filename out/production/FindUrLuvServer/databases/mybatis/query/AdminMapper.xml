@@ -6,4 +6,41 @@
         SELECT * FROM tblAdmin WHERE `account`=#{id} AND `password`=#{pw} AND `status`=1 LIMIT 1
     </select>
 
+    <select id="getMemberList" resultType="DataMap">
+        SELECT *
+        FROM tblMember
+        WHERE
+        1=1
+        <if test="search != null and search != ''">
+            AND (`nick` LIKE CONCAT('%', #{search}, '%'))
+        </if>
+        <if test="sido != null and sido != '' and sido != -1">
+            AND `sidoID` = #{sido}
+        </if>
+        <if test="gungu != null and gungu != '' and gungu != -1">
+            AND `gunguID` = #{gungu}
+        </if>
+        ORDER BY `uptDate` DESC LIMIT #{page}, #{limit}
+    </select>
+
+    <select id="getMemberCount" resultType="Integer">
+        SELECT COUNT(*) cnt
+        FROM tblMember
+        WHERE 1=1
+        <if test="search != null">
+            AND `nick` LIKE CONCAT('%', #{search}, '%')
+        </if>
+        <if test="sido != null and sido != '' and sido != -1">
+            AND `sidoID` = #{sido}
+        </if>
+        <if test="gungu != null and gungu != '' and gungu != -1">
+            AND `gunguID` = #{gungu}
+        </if>
+    </select>
+
+    <insert id="forbidMember">
+        INSERT INTO tblForbidden(`userID`, `forbidUntil`, `regDate`)
+        VALUES(#{id}, NOW() + INTERVAL #{day} DAY, NOW())
+    </insert>
+
 </mapper>

@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="databases.mybatis.mapper.CommMapper">
 
-    <select id="getS`idoList" resultType="DataMap">
+    <select id="getSidoList" resultType="DataMap">
         SELECT * FROM tblZipSido ORDER BY `description`
     </select>
 

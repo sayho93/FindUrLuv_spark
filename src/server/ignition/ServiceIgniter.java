@@ -105,7 +105,7 @@ public class ServiceIgniter extends BaseIgniter{
 
         super.get(service, "/system", (req, res) -> new Response(ResponseConst.CODE_SUCCESS, ResponseConst.MSG_SUCCESS, System.getenv()), "서버 시스템 환경을 확인하기 위한 API 입니다.");
 
-        super.post(service, "web/admin/check/password", (req, res) -> {
+        super.post(service, "/admin/check/password", (req, res) -> {
             DataMap map = RestProcessor.makeProcessData(req.raw());
 
             if(DataMapUtil.isValid(map, "account", "password")){
@@ -124,8 +124,46 @@ public class ServiceIgniter extends BaseIgniter{
             }
         }, "관리자 비밀번호 검증을 위한 API", "account", "password");
 
+        super.get(service, "/admin/member", (req, res) -> {
+            DataMap map = RestProcessor.makeProcessData(req.raw());
+            final int page = map.getInt("page", 1);
+            final int limit = map.getInt("limit", 10);
+            final String search = map.getString("search", "");
+            final int sido = map.getInt("sido", -1);
+            final int gungu = map.getInt("gungu", -1);
+            final ListBox listBox = adminSVC.getMemberList(page, limit, search, sido, gungu);
 
-        super.post(service, "/web/member/register", (req, res) -> {
+            return new Response(ResponseConst.CODE_SUCCESS, ResponseConst.MSG_SUCCESS, listBox);
+        }, "관리자용 회원 리스트 취득을 위한 API", "page[optional]", "limit[optional]", "search[optional]", "sido[optional]", "gungu[opional]");
+
+        super.post(service, "/admin/member/restrict/:id", (req, res) -> {
+            final int id = Integer.parseInt(req.params(":id"));
+            DataMap map = RestProcessor.makeProcessData(req.raw());
+            final int day = map.getInt("day", 1);
+            adminSVC.forbidMember(id, day);
+
+            return new Response(ResponseConst.CODE_SUCCESS, ResponseConst.MSG_SUCCESS);
+        },"회원 제한을 위한 API", "id[REST]", "day");
+
+        super.get(service, "/info/sido", (req, res) -> {
+            final List<DataMap> list = commonSVC.getSidoList();
+            return new Response(ResponseConst.CODE_SUCCESS, ResponseConst.MSG_SUCCESS, list);
+        }, "시/도 목록 취득을 위한 API");
+
+        super.get(service, "/info/gugun", (req, res) -> {
+            DataMap map = RestProcessor.makeProcessData(req.raw());
+            final int id = map.getInt("sidoID");
+            final List<DataMap> list;
+
+            if(DataMapUtil.isValid(map, "sidoID")) {
+                list = commonSVC.getGugunList(id);
+                return new Response(ResponseConst.CODE_SUCCESS, ResponseConst.MSG_SUCCESS, list);
+            } else
+                return new Response(ResponseConst.CODE_INVALID_PARAM, ResponseConst.MSG_INVALID_PARAM);
+        }, "구/군 목록 취득을 위한 API", "sidoID[optional]");
+
+
+        super.post(service, "/api/member/register", (req, res) -> {
             DataMap map = RestProcessor.makeProcessData(req.raw());
 
             if(DataMapUtil.isValid(map, "name", "nick", "email", "regType", "phone", "region", "birth", "sex", "tendency", "introTxt")){
@@ -141,7 +179,7 @@ public class ServiceIgniter extends BaseIgniter{
 
         }, "회원가입을 위한 API", "name", "nick", "email", "phone", "region", "password[optional]", "accessToken[optional]", "regType", "birth", "sex", "tendancy", "introTxt");
 
-        super.get(service, "/web/member/check/email", (req, res) -> {
+        super.get(service, "/api/member/check/email", (req, res) -> {
             DataMap map =RestProcessor.makeProcessData(req.raw());
 
             if(DataMapUtil.isValid(map, "email")){
@@ -156,7 +194,7 @@ public class ServiceIgniter extends BaseIgniter{
             }
         }, "해당 이메일로 가입된 회원이 있는지 판별하는 API", "email");
 
-        super.get(service, "/web/member/check/nick", (req, res) -> {
+        super.get(service, "/api/member/check/nick", (req, res) -> {
             DataMap map = RestProcessor.makeProcessData(req.raw());
             if(DataMapUtil.isValid(map, "nick")){
                 final String nick = map.getString("nick");
@@ -172,7 +210,7 @@ public class ServiceIgniter extends BaseIgniter{
 
         }, "해당 닉네임으로 가입되 회원이 있는지 판별하는 API", "nick");
 
-        super.get(service, "/web/member/check/phone", (req, res) -> {
+        super.get(service, "/api/member/check/phone", (req, res) -> {
             DataMap map = RestProcessor.makeProcessData(req.raw());
             if(DataMapUtil.isValid(map, "phone")){
                 final String phone = map.getString("phone");
@@ -187,13 +225,17 @@ public class ServiceIgniter extends BaseIgniter{
         }, "해당 전화번호로 가입된 회원이 있는지 판별하는 API", "phone");
 
 
-        super.post(service, "/web/member/login", (req, res) -> {
+        super.post(service, "/api/member/login", (req, res) -> {
             DataMap map = RestProcessor.makeProcessData(req.raw());
-
             if(DataMapUtil.isValid(map, "loginType", "email")){
                 final DataMap member = userSVC.memberLogin(map);
                 if(member == null)
                     return new Response(ResponseConst.CODE_NOT_EXISTING, ResponseConst.MSG_NOT_EXISTING);
+
+                DataMap check = userSVC.checkRestriction(member.getInt("id"));
+                if(check != null) {
+                    return new Response(ResponseConst.CODE_UNAUTHORIZED, ResponseConst.MSG_UNAUTHORIZED, check.getFmDate("forbidUntil", "yyyy년 MM월 dd일 hh시 mm분 ss초"));
+                }
 
                 return new Response(ResponseConst.CODE_SUCCESS, ResponseConst.MSG_SUCCESS, member);
             }else{

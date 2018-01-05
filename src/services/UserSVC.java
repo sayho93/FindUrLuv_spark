@@ -27,6 +27,15 @@ import java.util.Set;
 
 public class UserSVC extends BaseService {
 
+    public DataMap checkRestriction(int id){
+        DataMap restrictionInfo;
+        try(SqlSession sqlSession = super.getSession()){
+            UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
+            restrictionInfo = userMapper.getRestrictionData(id);
+        }
+        return restrictionInfo;
+    }
+
     public DataMap memberLogin(DataMap map){
         final String email = map.getString("email");
         final String loginType = map.getString("loginType");
