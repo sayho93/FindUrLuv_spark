@@ -46,4 +46,21 @@ public class AdminSVC extends BaseService {
             sqlSession.commit();
         }
     }
+
+    public ListBox getRestrictedMemberList(int page, int limit, String name, String startDate, String endDate){
+        final int realPage = (page - 1) * limit;
+        final List<DataMap> list;
+        int total;
+
+        try(SqlSession sqlSession = super.getSession()){
+            AdminMapper adminMapper = sqlSession.getMapper(AdminMapper.class);
+            list = adminMapper.getRestrictedMemberList(realPage, limit, name, startDate, endDate);
+            total = adminMapper.getRestrictedMemberCount(name, startDate, endDate);
+        }
+        PageInfo pageInfo = new PageInfo(limit, page);
+        pageInfo.commit(total);
+        ListBox listBox = new ListBox(pageInfo, list);
+
+        return listBox;
+    }
 }

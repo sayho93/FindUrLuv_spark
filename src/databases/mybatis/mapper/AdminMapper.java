@@ -13,4 +13,8 @@ public interface AdminMapper {
     int getMemberCount(@Param("search") String search, @Param("sido") int sido, @Param("gungu") int gungu);
 
     void forbidMember(@Param("id") int id, @Param("day") int day);
+
+    List<DataMap> getRestrictedMemberList(@Param("page") int page, @Param("limit") int limit, @Param("name") String name, @Param("startDate") String startDate, @Param("endDate") String endDate);
+
+    int getRestrictedMemberCount(@Param("name") String name, @Param("startDate") String startDate, @Param("endDate") String endDate);
 }

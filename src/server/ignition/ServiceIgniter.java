@@ -36,10 +36,7 @@ import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.Calendar;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Vector;
+import java.util.*;
 
 /**
  * @author 함의진
@@ -135,6 +132,20 @@ public class ServiceIgniter extends BaseIgniter{
 
             return new Response(ResponseConst.CODE_SUCCESS, ResponseConst.MSG_SUCCESS, listBox);
         }, "관리자용 회원 리스트 취득을 위한 API", "page[optional]", "limit[optional]", "search[optional]", "sido[optional]", "gungu[opional]");
+
+        super.get(service, "/admin/member/restricted", (req, res) -> {
+            DataMap map = RestProcessor.makeProcessData(req.raw());
+            final int page = map.getInt("page", 1);
+            final int limit = map.getInt("limit", 10);
+            final String name = map.getString("name", null);
+
+            final String startDate = map.getFmDate("startDate", "YYYY-MM-DD");
+            final String endDate = map.getFmDate("endDate", "YYYY-MM-DD");
+
+            Log.i("fmtDate:::", startDate + "::" + endDate);
+            ListBox listBox = adminSVC.getRestrictedMemberList(page, limit, name, startDate, endDate);
+            return new Response(ResponseConst.CODE_SUCCESS, ResponseConst.MSG_SUCCESS);
+        }, "이용이 제한된 회원 목록 취득을 위한 API", "name", "startDate", "endDate");
 
         super.post(service, "/admin/member/restrict/:id", (req, res) -> {
             final int id = Integer.parseInt(req.params(":id"));

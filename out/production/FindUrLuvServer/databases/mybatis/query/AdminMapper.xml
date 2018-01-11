@@ -20,7 +20,8 @@
         <if test="gungu != null and gungu != '' and gungu != -1">
             AND `gunguID` = #{gungu}
         </if>
-        ORDER BY `uptDate` DESC LIMIT #{page}, #{limit}
+        ORDER BY `uptDate` DESC
+        LIMIT #{page}, #{limit}
     </select>
 
     <select id="getMemberCount" resultType="Integer">
@@ -42,5 +43,37 @@
         INSERT INTO tblForbidden(`userID`, `forbidUntil`, `regDate`)
         VALUES(#{id}, NOW() + INTERVAL #{day} DAY, NOW())
     </insert>
+
+    <select id="getRestrictedMemberList" resultType="DataMap">
+        SELECT *
+        FROM tblMember M JOIN tblForbidden F ON F.userID = M.id
+        WHERE 1=1
+        <if test="name != null">
+            AND M.name LIKE CONCAT('%', #{name}, '%')
+        </if>
+        <if test="startDate != null">
+            AND F.regDate <![CDATA[ < #{startDate} ]]>
+        </if>
+        <if test="endDate != null">
+            AND F.forbidUntil <![CDATA[ > #{endDate} ]]>
+        </if>
+        ORDER BY F.regDate DESC
+        LIMIT #{page}, #{limit}
+    </select>
+
+    <select id="getRestrictedMemberCount" resultType="Integer">
+        SELECT COUNT(*) cnt
+        FROM tblMember M JOIN tblForbidden F ON F.userID = M.id
+        WHERE 1=1
+        <if test="name != null">
+            AND M.name LIKE CONCAT('%', #{name}, '%')
+        </if>
+        <if test="startDate != null">
+            AND F.regDate <![CDATA[ < #{startDate} ]]>
+        </if>
+        <if test="endDate != null">
+            AND F.forbidUntil <![CDATA[ > #{endDate} ]]>
+        </if>
+    </select>
 
 </mapper>
